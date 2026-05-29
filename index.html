@@ -6,7 +6,19 @@
     <title>Carlgen - Personal Homepage</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="welcome-active">
+    <section class="welcome-screen" id="welcomeScreen" aria-label="Welcome screen" role="button" tabindex="0">
+        <div class="welcome-inner">
+            <div class="welcome-profile">
+                <img src="avatar.jpg" alt="Carlgen avatar">
+                <h1>Carlgen</h1>
+            </div>
+            <div class="welcome-greeting">
+                <p>Nice to meet you !</p>
+                <span>Click to enter</span>
+            </div>
+        </div>
+    </section>
     <header class="site-header">
         <a class="brand" href="#">Carlgen</a>
         <nav class="top-nav" aria-label="Primary navigation">
@@ -119,5 +131,22 @@
     <footer class="site-footer">
         <p>Copyright © 2026 Carlgen. Built with GitHub Pages.</p>
     </footer>
+    <script>
+        const welcomeScreen = document.getElementById('welcomeScreen');
+
+        function enterHomepage() {
+            document.body.classList.remove('welcome-active');
+            document.body.classList.add('homepage-entered');
+            welcomeScreen.setAttribute('aria-hidden', 'true');
+        }
+
+        welcomeScreen.addEventListener('click', enterHomepage);
+        welcomeScreen.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                enterHomepage();
+            }
+        });
+    </script>
 </body>
 </html>
